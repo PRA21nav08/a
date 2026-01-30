@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tanishka ❤️ Be My Valentine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 360px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 1em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 15px;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background: #ff2e63;
+      color: white;
+    }
+
+    .no {
+      background: white;
+      color: #ff2e63;
+      position: absolute;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 22px;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <h1>Tanishka ❤️</h1>
+    <p>
+      You make my days brighter and my heart calmer.  
+      Every smile of yours feels like home to me.
+    </p>
+
+    <h2>Will you be my Valentine? 🌹</h2>
+
+    <button class="yes" onclick="yesClicked()">YES 💖</button>
+    <button class="no" id="noBtn">NO 🙈</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
+
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function yesClicked() {
+      document.getElementById("card").innerHTML = `
+        <h1>Tanishka said YES 💘</h1>
+        <p>
+          I knew my heart chose right 🥹❤️<br><br>
+          This Valentine’s is officially ours 🌹
+        </p>
+        <h2>Happy Valentine’s Day 💐</h2>
+      `;
+
+      for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+      }
+    }
+  </script>
+
+</body>
+</html>
